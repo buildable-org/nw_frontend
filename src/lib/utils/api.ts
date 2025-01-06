@@ -2,7 +2,7 @@ import axios from 'axios';
 
 /* axios az env urlbo vagy fallback a localhostra*/
 const apiClient = axios.create({
-  baseURL: import.meta.env.PUBLIC_API_URL || 'http://localhost:1337',
+  baseURL: 'http://34.136.198.157:1337',
   headers: {
     'Content-Type': 'application/json'
   }

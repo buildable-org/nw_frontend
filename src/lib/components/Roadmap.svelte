@@ -11,7 +11,7 @@
 
   .roadmap h2 {
     font-size: 2.5rem;
-    color: #f24236;
+    color: var(--red);
     margin-bottom: 50px;
   }
 
@@ -32,7 +32,7 @@
     top: 0;
     width: 3px;
     height: 100%;
-    background: #f24236;
+    background: var(--red);
   }
 
   .timeline-step {
@@ -54,7 +54,7 @@
 
   .timeline-step h3 {
     font-size: 1.3rem;
-    color: #f24236;
+    color: var(--red);
     margin-left: 38px;
     line-height: 28.17px;
   }
@@ -73,7 +73,7 @@
     width: 25px;
     height: 25px;
     background: #0a0a0a;
-    border: 2px solid #f24236;
+    border: 2px solid var(--red);
     border-radius: 50%;
   }
 
