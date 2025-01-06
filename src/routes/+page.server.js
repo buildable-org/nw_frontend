@@ -5,15 +5,13 @@ export async function load() {
     const heroData = await fetchData('/api/hero');
     const cardsData = await fetchData('/api/card-section?populate=cards');
     const roadmapData = await fetchData('/api/roadmap?populate=roadmap_steps');
-    
-    const formData = await fetchData('/api/forms?filters[slug][$eq]=sign-up&populate=form_fields');
-
+    const ctaData = await fetchData('/api/cta-section');
 
     return {
       heroData,
       cardsData,
       roadmapData,
-      formData: formData?.data[0] || null,
+      ctaData,
     };
   } catch (error) {
     console.error('Error in load function:', error);

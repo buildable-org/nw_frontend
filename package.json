@@ -21,6 +21,7 @@
 	},
 	"dependencies": {
 		"@directus/sdk": "^18.0.3",
-		"axios": "^1.7.9"
+		"axios": "^1.7.9",
+		"npm": "^11.0.0"
 	}
 }

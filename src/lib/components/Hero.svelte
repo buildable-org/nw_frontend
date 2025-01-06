@@ -1,5 +1,6 @@
 <script>
     export let heroData;
+    import ApplyReadMoreButtons from './ApplyReadMoreButtons.svelte';
 </script>
   
   <style>
@@ -188,11 +189,12 @@
         <p>{heroData?.data?.a1}</p>
         <h3>{heroData?.data?.q2}</h3>
         <p>{heroData?.data?.a2}</p>
-        <div class="button-container">
-          <a class="full-btn" href={heroData?.data?.full_btn_link}>{heroData?.data?.full_btn}</a>
-          <a class="outline-btn" href={heroData?.data?.bordered_btn_link}>{heroData?.data?.bordered_btn}</a>
-        </div>
+        <ApplyReadMoreButtons 
+            buttonText1={heroData?.data?.full_btn} 
+            buttonLink1={heroData?.data?.full_btn_link} 
+            buttonText2={heroData?.data?.bordered_btn} 
+            buttonLink2={heroData?.data?.bordered_btn_link} 
+        />
       </div>
     </section>
   </div>
-  

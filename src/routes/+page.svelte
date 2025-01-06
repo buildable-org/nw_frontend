@@ -2,16 +2,17 @@
     import Hero from '$lib/components/Hero.svelte';
     import Why from '$lib/components/Why.svelte';
     import Roadmap from '$lib/components/Roadmap.svelte';
-    import BottomCTA from '$lib/components/BottomCTA.svelte';
+    import BottomCta from '$lib/components/BottomCTA.svelte';
+    import Footer from '$lib/components/Footer.svelte';
   
     export let data;
-    const { heroData, cardsData, roadmapData, formData } = data;
-  </script>
+    const { heroData, cardsData, roadmapData, ctaData} = data;
+</script>
 
 <div class="global-container">
   <Hero {heroData} />
   <Why id="why" {cardsData} />
   <Roadmap {roadmapData} />
-  <BottomCTA id="signup" {formData} />
+  <BottomCta {ctaData} />
+  <Footer />
 </div>
-  

@@ -1,6 +1,46 @@
 <script>
     export let cardsData;
     export let id;
+
+    // @ts-ignore
+    function renderNodes(blocks = []) {
+      return blocks.map(block => {
+        if (block.type === 'paragraph') {
+          return `<p>${renderChildren(block.children)}</p>`;
+        }
+        if (block.type === 'heading') {
+          return `<h${block.level}>${renderChildren(block.children)}</h${block.level}>`;
+        }
+        if (block.type === 'list') {
+          const listTag = block.format === 'ordered' ? 'ol' : 'ul';
+          const items = block.children
+            // @ts-ignore
+            .map(item => `<li>${renderChildren(item.children)}</li>`)
+            .join('');
+          return `<${listTag}>${items}</${listTag}>`;
+        }
+        return `<div>${renderChildren(block.children)}</div>`;
+      }).join('');
+    }
+    
+    // @ts-ignore
+    function renderChildren(children = []) {
+      // @ts-ignore
+      return children.map(node => {
+        // link node
+        if (node.type === 'link') {
+          return `<a href="${node.url}">${renderChildren(node.children)}</a>`;
+        }
+        // text node with marks
+        let text = node.text || '';
+        if (node.bold) text = `<strong>${text}</strong>`;
+        if (node.italic) text = `<em>${text}</em>`;
+        if (node.underline) text = `<u>${text}</u>`;
+        if (node.strikethrough) text = `<s>${text}</s>`;
+        if (node.code) text = `<code>${text}</code>`;
+        return text;
+      }).join('');
+    }
 </script>
 
 <style>
@@ -59,7 +99,7 @@
       {#each cardsData?.data?.cards as card}
         <div class="card">
           <h4>{card.title}</h4>
-          <p>{card.description}</p>
+          {@html renderNodes(card.description)}
         </div>
       {/each}
     </div>
