@@ -36,7 +36,7 @@
     <div class="nav-links">
         <a href="/">Home</a>
         <a href="/faq">faq</a>
-        <a href="/application">application</a>
+        <a href="/apply">application</a>
     </div>
     <div class="social-links">
         <a href="https://x.com/_buildable_" target="_blank" rel="noopener noreferrer">
