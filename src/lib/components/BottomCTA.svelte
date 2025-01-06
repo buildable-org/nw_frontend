@@ -19,6 +19,11 @@
 
   let fieldValues: { [key: string]: string } = {};
   let responseMessage = '';
+  let isSubmitted = false;
+
+  //rate limit (percenkent csak 1et enged)
+  let lastSubmissionTime = 0;
+  const RATE_LIMIT_MS = 60000;
 
   function sanitizeInput(input: string) {
     const element = document.createElement('div');
@@ -33,8 +38,22 @@
   async function handleSubmit(event: Event) {
     event.preventDefault();
 
+    const currentTime = Date.now();
+    if (currentTime - lastSubmissionTime < RATE_LIMIT_MS) {
+      responseMessage = "you're submitting too fast, pls wait a bit";
+      return;
+    }
+
+    const honeypotField = (document.getElementById('mezescsupor') as HTMLInputElement)?.value || '';
+    if (honeypotField.trim() !== '') {
+      responseMessage = 'you seem to be a bot, pls stop';
+      return;
+    }
+
+    lastSubmissionTime = currentTime;
+
     if (!formData || !formData.form_fields) {
-      responseMessage = 'Form data is not available.';
+      responseMessage = 'form is not avaliable';
       return;
     }
 
@@ -45,21 +64,13 @@
       const value = fieldValues[field.label] || '';
       sanitizedData[key] = sanitizeInput(value.trim());
       if (field.required && !sanitizedData[key]) {
-        responseMessage = `Please fill the required field: ${field.label}`;
-        throw new Error('Required fields missing');
+        responseMessage = `please fill in this too: ${field.label}`;
+        throw new Error('uh-oh you skipped something required');
       }
     });
 
-    console.log('Form Fields:', formData.form_fields);
-    console.log('Sanitized Data:', sanitizedData);
-
     try {
-      const baseURL = import.meta.env.VITE_PUBLIC_API_URL || 'http://localhost:1337';
-      console.log('Submission Payload:', JSON.stringify({
-        form: formData.id,
-        data: sanitizedData,
-        submitted_at: new Date().toISOString(),
-      }));
+      const baseURL = 'http://34.59.144.159:1337/';
 
       const res = await fetch(`${baseURL}/api/form-responses`, {
         method: 'POST',
@@ -67,21 +78,24 @@
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          form: formData.id,
-          data: sanitizedData,
-          submitted_at: new Date().toISOString(),
+          data: {
+            form: formData.id,
+            data: sanitizedData,
+            submitted_at: new Date().toISOString(),
+          }
         }),
       });
 
       if (res.ok) {
-        responseMessage = 'Thank you! Your response has been submitted.';
+        responseMessage = "alrighty, thanks for the interest, you're all set :)\nwe'll be in touch befor you know it";
         fieldValues = {};
+        isSubmitted = true;
       } else {
         const error = await res.json();
-        responseMessage = `Error: ${error.error.message}`;
+        responseMessage = `there was an issue: ${error.error.message}`;
       }
     } catch (err) {
-      responseMessage = 'Something went wrong. Please try again.';
+      responseMessage = 'there was an issue, please try again later';
       console.error(err);
     }
   }
@@ -90,12 +104,6 @@
 
  
   <style>
-    :root {
-      --red: #f24236;
-      --yellow: #f3a712;
-      --white: #e0e0e0;
-      --gray: #ccc;
-    }
   
     .container {
       padding: 4rem 2rem;
@@ -145,7 +153,7 @@
     }
 
     form {
-        border-left: 3px solid #f24236;
+        border-left: 3px solid var(--red);
         padding: 20px;
         border-radius: 8px;
         display: flex;
@@ -225,27 +233,27 @@
           <p>{formData.description}</p>
         {/if}
       </div>
-      <form on:submit={handleSubmit}>
-        {#each formData.form_fields as field}
-          <div>
-            <input
-              id={field.label}
-              type={field.type === 'shortText' ? 'text' : field.type}
-              placeholder={field.label}
-              bind:value={fieldValues[field.label]}
-              required={field.required}
-            />
-          </div>
-        {/each}
-        <button type="submit">Submit</button>
-        {#if responseMessage}
-          <p style="margin-bottom: 0">{responseMessage}</p>
-        {/if}
-      </form>
+      {#if !isSubmitted}
+        <form on:submit={handleSubmit}>
+          {#each formData.form_fields as field}
+            <div>
+              <input type="text" id="mezescsupor" name="mezescsupor" style="display: none;" />
+              <input
+                id={field.label}
+                type={field.type === 'shortText' ? 'text' : field.type}
+                placeholder={field.label}
+                bind:value={fieldValues[field.label]}
+                required={field.required}
+              />
+            </div>
+          {/each}
+          <button type="submit">Submit</button>
+        </form>
+      {/if}
+      {#if responseMessage}
+            <p style="margin-bottom: 0">{responseMessage}</p>
+      {/if}
     {:else}
       <p>Loading form...</p>
     {/if}
   </div>
-  
-  
-  
