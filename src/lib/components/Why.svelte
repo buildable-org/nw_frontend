@@ -52,7 +52,7 @@
   
     .why h2 {
       font-size: 2.5rem;
-      color: #f24236;
+      color: var(--red);
       margin-bottom: 50px;
     }
   
@@ -67,21 +67,21 @@
   
     .card {
       background: #141414;
-      border-bottom: 3px solid #f24236;
-      border-top: 3px solid #f24236;
+      border-bottom: 3px solid var(--red);
+      border-top: 3px solid var(--red);
       padding: 40px;
       border-radius: 8px;
     }
   
     .card h4 {
       font-size: 1.2rem;
-      color: #f24236;
+      color: var(--red);
       margin-bottom: 15px;
     }
   
     .card p {
       font-size: 0.95rem;
-      color: #f3a712;
+      color: var(--yellow);
     }
   
     .why .description {
@@ -89,7 +89,7 @@
       margin: 50px auto 0;
       font-size: 1rem;
       line-height: 1.6;
-      color: #f3a712;
+      color: var(--yellow);
     }
 </style>
 

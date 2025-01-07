@@ -4,6 +4,8 @@
     label: string;
     type: string;
     required: boolean;
+    placeholder?: string;
+    description?: string;
   }
 
   interface FormData {
@@ -21,7 +23,6 @@
   let responseMessage = "";
   let isSubmitted = false;
 
-  //rate limit (percenkent csak 1et enged)
   let lastSubmissionTime = 0;
   const RATE_LIMIT_MS = 60000;
 
@@ -40,21 +41,21 @@
 
     const currentTime = Date.now();
     if (currentTime - lastSubmissionTime < RATE_LIMIT_MS) {
-      responseMessage = "you're submitting too fast, pls wait a bit";
+      responseMessage = "you're submitting too fast, please wait a bit";
       return;
     }
 
     const honeypotField =
       (document.getElementById("mezescsupor") as HTMLInputElement)?.value || "";
     if (honeypotField.trim() !== "") {
-      responseMessage = "you seem to be a bot, pls stop";
+      responseMessage = "you seem to be a bot, please stop";
       return;
     }
 
     lastSubmissionTime = currentTime;
 
     if (!formData || !formData.form_fields) {
-      responseMessage = "form is not avaliable";
+      responseMessage = "form is not available";
       return;
     }
 
@@ -71,7 +72,9 @@
     });
 
     try {
-      const baseURL = "http://34.59.144.159:1337/";
+      const baseURL = "http://34.136.198.157:1337";
+
+      console.log("form new id: ", formData.id);  
 
       const res = await fetch(`${baseURL}/api/form-responses`, {
         method: "POST",
@@ -80,6 +83,7 @@
         },
         body: JSON.stringify({
           data: {
+            title: formData.name,
             form: formData.id,
             data: sanitizedData,
             submitted_at: new Date().toISOString(),
@@ -88,8 +92,7 @@
       });
 
       if (res.ok) {
-        responseMessage =
-          "alrighty, thanks for the interest, you're all set :)\nwe'll be in touch befor you know it";
+        responseMessage = `alrighty, thanks for the interest, you're all set :)<br><br>we'll be in touch before you know it`;
         fieldValues = {};
         isSubmitted = true;
       } else {
@@ -114,13 +117,17 @@
     <div class="text-content">
       <h2>{formData.name}</h2>
       {#if formData.description}
-        <p>{formData.description}</p>
+        <h3>{formData.description}</h3>
       {/if}
     </div>
     {#if !isSubmitted}
       <form on:submit={handleSubmit}>
         {#each formData.form_fields as field}
-          <div>
+          <div class="form-group">
+            <label for={field.label}>{field.label} </label>
+            {#if field.description}
+              <p class="field-description">{field.description}</p>
+            {/if}
             <input
               type="text"
               id="mezescsupor"
@@ -130,7 +137,7 @@
             {#if field.type === "longText"}
               <textarea
                 id={field.label}
-                placeholder={field.label}
+                placeholder={field.placeholder || ""}
                 bind:value={fieldValues[field.label]}
                 required={field.required}
                 on:input={autoResizeTextarea}
@@ -139,7 +146,7 @@
               <input
                 id={field.label}
                 type={field.type === "shortText" ? "text" : field.type}
-                placeholder={field.label}
+                placeholder={field.placeholder || ""}
                 bind:value={fieldValues[field.label]}
                 required={field.required}
               />
@@ -150,7 +157,7 @@
       </form>
     {/if}
     {#if responseMessage}
-      <p style="margin-bottom: 0">{responseMessage}</p>
+      <p style="margin-bottom: 0">{@html responseMessage}</p>
     {/if}
   {:else}
     <p>Loading form...</p>
@@ -163,14 +170,8 @@
     max-width: 800px;
     margin: 0 auto;
     font-family: "Poppins", sans-serif;
-  }
-
-  .button-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
+    border-radius: 8px;
+    min-height: calc(100vh - 104px);
   }
 
   h2 {
@@ -178,128 +179,100 @@
     color: var(--red);
     margin-bottom: 1rem;
     text-align: center;
+    font-weight: 700;
+  }
+
+  h3 {
+    text-align: center;
+    margin: 1rem 1rem 2rem 1rem;
   }
 
   p {
     font-size: 1rem;
     line-height: 1.6;
-    color: var(--gray);
-    margin-bottom: 2rem;
-  }
-
-  form p {
-    margin-bottom: 0;
-  }
-  .button-container a {
-    padding: 0.8rem 2.2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 3px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    text-align: center;
-    height: 90%;
+    color: rgba(255, 255, 255 , 0.5);
   }
 
   form {
-    border-left: 3px solid var(--red);
     padding: 20px;
-    padding-left: 50px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    max-width: 800px;
+    gap: 1.5rem;
+    max-width: 700px;
     margin: 0 auto;
+    border-left: 2px solid var(--red);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 
-  input {
-    padding: 0.5rem;
-    margin-bottom: 2rem;
-    width: 100%;
+  input,
+  textarea {
+    padding: 0.8rem;
+    margin: 0.8rem 0 1.2rem;
     font-size: 1rem;
-    background: none;
+    background: rgba(255, 255, 255, 0.05);
     border: none;
-    border-bottom: var(--yellow) 2px solid;
-    color: var(--yellow);
+    border-radius: 4px;
+    width: 100%;
+    color: #ffffff;
+    transition: all 0.2s ease-in-out;
   }
 
-  input:focus {
-    outline: none;
-    border: none;
+  input:focus,
+  textarea:focus {
+    outline: 2px solid rgba(243, 167, 18, 0.4);
   }
 
-  input::placeholder {
-    color: var(--yellow);
+  input::placeholder,
+  textarea::placeholder {
+    color: rgba(255, 255, 255 , 0.7);
   }
 
   textarea {
-    padding: 0.5rem;
-    margin-bottom: 2rem;
-    width: 100%;
-    font-size: 1rem;
-    background: none;
-    border: none;
-    border-bottom: var(--yellow) 2px solid;
-    color: var(--yellow);
     resize: none;
     overflow: hidden;
     min-height: 7rem;
   }
 
-  textarea:focus {
-    outline: none;
-    border: none;
-  }
-
-  textarea::placeholder {
-    color: var(--yellow);
-  }
-
   button {
-    padding: 0.5rem;
+    padding: 0.8rem;
     font-size: 1rem;
-    background-color: var(--red);
+    background-color: var(--yellow);
     border: none;
-    border-radius: 3px;
+    border-radius: 4px;
     cursor: pointer;
     font-weight: 600;
     color: #ffffff;
+    transition: all 0.3s ease;
   }
 
   button:hover {
-    background: var(--yellow);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(243, 167, 18, 0.4);
+    background-color: #d98c00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(243, 167, 18, 0.4);
   }
 
   .message {
     text-align: center;
-    color: var(--red);
+    font-size: 1rem;
+    margin-top: 1rem;
+    color: #333;
   }
 
   .error {
     text-align: center;
     color: red;
+    font-size: 1rem;
   }
 
   @media (max-width: 768px) {
     .container {
-      flex-direction: column;
-      align-items: flex-start;
+      padding: 2rem 1rem;
     }
 
-    .button-container {
-      width: 100%;
-      align-items: center;
-    }
-
-    .button-container a {
-      max-width: 220px;
+    form {
+      padding: 15px;
     }
   }
 </style>
+
