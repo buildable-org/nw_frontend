@@ -39,7 +39,7 @@
     position: relative;
     margin-bottom: 42px;
     text-align: left;
-    color: #f3a712;
+    color: var(--yellow);
   }
 
   .timeline-step:last-child::after {
@@ -63,6 +63,7 @@
     font-size: 0.95rem;
     line-height: 1.4;
     margin-left: 38px;
+    color: white;
   }
 
   .timeline-step::before {

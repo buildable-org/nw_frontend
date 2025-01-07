@@ -4,6 +4,7 @@
     label: string;
     type: string;
     required: boolean;
+    order: number;
     placeholder?: string;
     description?: string;
   }
@@ -58,6 +59,8 @@
       responseMessage = "form is not available";
       return;
     }
+
+    const fields = formData.form_fields.sort((a, b) => a.order - b.order);
 
     const sanitizedData: { [key: string]: string } = {};
 
@@ -117,6 +120,7 @@
     <div class="text-content">
       <h2>{formData.name}</h2>
       {#if formData.description}
+        <!-- Its be there or be square :) -->
         <h3>{formData.description}</h3>
       {/if}
     </div>

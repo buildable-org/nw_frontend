@@ -26,7 +26,7 @@
         font-size: 4rem;
         letter-spacing: -4px;
         font-weight: 600;
-        color: #f24236;
+        color: var(--red);
         margin-bottom: 30px;
     }
     .idea h3 {
@@ -46,7 +46,7 @@
 
     .card {
         background: #141414;
-        border-left: 2px solid #f24236;
+        border-left: 2px solid var(--red);
         padding: 20px;
         border-radius: 8px;
         text-align: left;
@@ -54,14 +54,14 @@
 
     .card h4 {
         font-size: 1.75rem;
-        color: #f24236;
+        color: var(--red);
         margin-bottom: 20px;
     }
 
     .card p {
         font-size: 1.1rem;
         margin-bottom: 2px;
-        color: #f3a712;
+        color: var(--yellow);
     }
 
     .idea .description {
@@ -69,11 +69,11 @@
         margin: 50px auto 0;
         font-size: 1rem;
         line-height: 1.6;
-        color: #f3a712;
+        color: var(--yellow);
     }
 
     a {
-        color: #f24236;
+        color: var(--red);
     }
 </style>
 

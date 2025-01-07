@@ -16,11 +16,6 @@
 </section>
 
 <style>
-  :root {
-    --red: #f24236;
-    --yellow: #f3a712;
-    --white: #e0e0e0;
-  }
 
   .cta {
     background: none;
