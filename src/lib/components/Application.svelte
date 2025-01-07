@@ -27,6 +27,8 @@
   let lastSubmissionTime = 0;
   const RATE_LIMIT_MS = 60000;
 
+  const fields = formData?.form_fields.sort((a, b) => a.order - b.order);
+
   function sanitizeInput(input: string) {
     const element = document.createElement("div");
     element.innerText = input;
@@ -59,8 +61,6 @@
       responseMessage = "form is not available";
       return;
     }
-
-    const fields = formData.form_fields.sort((a, b) => a.order - b.order);
 
     const sanitizedData: { [key: string]: string } = {};
 
@@ -116,7 +116,7 @@
 </script>
 
 <div class="container" {id}>
-  {#if formData}
+  {#if formData && fields}
     <div class="text-content">
       <h2>{formData.name}</h2>
       {#if formData.description}
@@ -126,7 +126,7 @@
     </div>
     {#if !isSubmitted}
       <form on:submit={handleSubmit}>
-        {#each formData.form_fields as field}
+        {#each fields as field}
           <div class="form-group">
             <label for={field.label}>{field.label} </label>
             {#if field.description}
