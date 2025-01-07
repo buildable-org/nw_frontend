@@ -183,8 +183,8 @@
     color: var(--red);
     margin-bottom: 1rem;
     text-align: center;
-    font-weight: 700;
-  }
+    font-family: "Almarai", serif;
+    font-weight: 600;  }
 
   h3 {
     text-align: center;

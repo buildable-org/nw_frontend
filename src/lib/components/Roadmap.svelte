@@ -10,13 +10,15 @@
   }
 
   .roadmap h2 {
+    font-family: "Almarai", serif;
+    font-weight: 700;
     font-size: 2.5rem;
     color: var(--red);
     margin-bottom: 50px;
   }
 
   .timeline {
-    max-width: 300px;
+    max-width: 450px;
     margin: 0 auto;
     position: relative;
   }

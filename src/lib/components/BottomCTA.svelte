@@ -25,7 +25,8 @@
 
   .cta h1 {
     font-size: 4rem;
-    font-weight: 400;
+    font-family: "Almarai", serif;
+    font-weight: 700;
     color: var(--yellow);
     letter-spacing: -1px;
     margin-bottom: 4rem;
@@ -62,9 +63,8 @@
   }
 
   .outline-btn:hover {
-    background: var(--red);
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(242, 66, 54, 0.4);
+    box-shadow: 0 8px 20px rgba(243, 167, 18, 0.4);
   }
 
   .middle-flex {

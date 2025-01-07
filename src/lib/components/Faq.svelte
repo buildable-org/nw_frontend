@@ -17,6 +17,8 @@
         font-size: 2.5rem;
         color: var(--red);
         margin-bottom: 50px;
+        font-family: "Almarai", serif;
+        font-weight: 700;
     }
 
     .list {

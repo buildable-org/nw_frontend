@@ -17,7 +17,7 @@
         <h3>{heroData?.data?.q1}</h3>
         <p>{heroData?.data?.a1}</p>
         <h3>{heroData?.data?.q2}</h3>
-        <p>{heroData?.data?.a2}</p>
+        <p id="hero-details">{heroData?.data?.a2}</p>
         <div class="button-container">
           <a class="full-btn" href={heroData?.data?.full_btn_link}>
             {heroData?.data?.full_btn}
@@ -44,9 +44,16 @@
     align-items: center;
   }
 
+  #hero-details {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--gray);
+  }
+
   .hero h1 {
     font-size: 2.2rem;
-    font-weight: 400;
+    font-family: "Almarai", serif;
+    font-weight: 700;
     color: var(--yellow);
     letter-spacing: -1px;
     margin-bottom: 0;
@@ -144,7 +151,7 @@
 
   .button-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: rows;
     margin-bottom: 0.5em;
     margin-top: 1rem;
   }
@@ -157,6 +164,7 @@
     text-decoration: underline !important;
     align-items: left !important;
     justify-content: left !important;
+    
   }
 
   .button-container a {
