@@ -47,7 +47,7 @@
 
     .card p {
         font-size: 0.95rem;
-        color: var(--yellow);
+        color: white;
     }
 
     .faq .description {

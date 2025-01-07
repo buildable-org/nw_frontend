@@ -49,7 +49,7 @@ body {
 
 .global-container {
     min-height: 100%;
-      background: radial-gradient(circle at top left, rgba(242, 66, 54, 0.5), transparent 30%),
+      background: 
               radial-gradient(circle at bottom right, rgba(243, 167, 18, 0.5), transparent 30%);
 }
 

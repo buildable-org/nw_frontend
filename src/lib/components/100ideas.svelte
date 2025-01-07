@@ -61,7 +61,7 @@
     .card p {
         font-size: 1.1rem;
         margin-bottom: 2px;
-        color: var(--yellow);
+        color: white;
     }
 
     .idea .description {
@@ -69,7 +69,7 @@
         margin: 50px auto 0;
         font-size: 1rem;
         line-height: 1.6;
-        color: var(--yellow);
+        color: white;
     }
 
     a {
