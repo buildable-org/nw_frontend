@@ -210,6 +210,7 @@
     padding: 0.8rem;
     margin: 0.8rem 0 1.2rem;
     font-size: 1rem;
+    font-family: "Poppins", sans-serif;
     background: rgba(255, 255, 255, 0.05);
     border: none;
     border-radius: 4px;
