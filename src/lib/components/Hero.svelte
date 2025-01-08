@@ -4,7 +4,7 @@
 </script>
 
 <div class="container">
-  <img class="hero-logo" src="/logo.svg" alt="Logomark">
+  <img class="hero-logo" src="/logo.svg" alt="Logomark" />
   <section class="hero">
     <div class="middle-flex">
       <div class="hero-image">
@@ -122,7 +122,6 @@
     flex-direction: column;
     align-items: left;
     justify-content: center;
-    width: 100%;
   }
 
   .hero-image {
@@ -135,7 +134,7 @@
     align-items: center;
     justify-content: center;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     position: relative; /* Ensures logo positioning relative to the container */
   }
 
@@ -151,7 +150,7 @@
 
   .button-container {
     display: flex;
-    flex-direction: rows;
+    flex-direction: row ;
     margin-bottom: 0.5em;
     margin-top: 1rem;
   }
@@ -164,7 +163,6 @@
     text-decoration: underline !important;
     align-items: left !important;
     justify-content: left !important;
-    
   }
 
   .button-container a {
@@ -190,12 +188,23 @@
   }
 
   @media (max-width: 768px) {
+
+    .hero {
+      line-height: 1;
+    }
+
     .hero h1 {
       font-size: 2.5rem;
     }
 
+    .hero h3 {
+      font-size: 1.5rem;
+      padding-bottom: 1rem;
+    }
+
     .hero p {
       font-size: 1rem;
+      margin-bottom: 0.5rem;
     }
 
     .full-btn {
@@ -213,7 +222,15 @@
     .middle-flex {
       flex-direction: column;
       gap: 2rem;
-      margin: 5rem;
+      margin: 5rem 2rem;
+    }
+
+    .button-container a {
+      font-size: 1rem;
+    }
+
+    .button-container {
+      flex-direction: column;
     }
   }
 </style>

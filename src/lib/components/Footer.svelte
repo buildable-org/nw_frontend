@@ -30,6 +30,12 @@
         height: 32px;
         filter: invert(1);
     }
+
+    @media (max-width: 768px) {
+        footer {
+            padding: 2rem 2rem 2rem 2rem;
+        }
+    }
 </style>
 
 <footer>
