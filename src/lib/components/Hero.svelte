@@ -195,24 +195,35 @@
 
     .hero h1 {
       font-size: 2.5rem;
+      text-align: center;
     }
 
     .hero h3 {
       font-size: 1.5rem;
       padding-bottom: 1rem;
+      text-align: center;
     }
 
     .hero p {
       font-size: 1rem;
       margin-bottom: 0.5rem;
+      text-align: center;
     }
 
     .full-btn {
       margin-bottom: 20px !important;
     }
 
+    .outline-btn {
+      text-align: center !important;
+    }
+
     .hero-logo {
       width: 66vw; /* Smaller logo on small screens */
+    }
+
+    .hero-text {
+      align-items: center;
     }
 
     .hero-image {
@@ -231,6 +242,7 @@
 
     .button-container {
       flex-direction: column;
+      align-items: center;
     }
   }
 </style>
