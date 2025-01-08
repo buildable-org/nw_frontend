@@ -77,7 +77,6 @@
     try {
       const baseURL = "http://34.136.198.157:1337";
 
-      console.log("form new id: ", formData.id);  
 
       const res = await fetch(`${baseURL}/api/form-responses`, {
         method: "POST",
