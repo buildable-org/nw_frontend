@@ -46,7 +46,6 @@
 
   #hero-details {
     font-size: 1rem;
-    line-height: 1.6;
     color: var(--gray);
   }
 
@@ -193,6 +192,10 @@
       line-height: 1;
     }
 
+    .hero-logo {
+      margin-top: 4rem;
+    }
+
     .hero h1 {
       font-size: 2.5rem;
       text-align: center;
@@ -205,7 +208,7 @@
     }
 
     .hero p {
-      font-size: 1rem;
+      font-size: 1.2rem;
       margin-bottom: 0.5rem;
       text-align: center;
     }
@@ -244,5 +247,10 @@
       flex-direction: column;
       align-items: center;
     }
+
+    #hero-details {
+      font-size: 0.9rem;
+    }
+
   }
 </style>
