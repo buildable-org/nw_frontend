@@ -9,8 +9,8 @@
       <h1>{ctaData?.data?.title}</h1>
     </div>
     <div class="button-container">
-      <a class="full-btn" href={"/apply"}>apply (4mins)</a>
-      <a class="outline-btn" href={"/faq"}>faq</a>
+      <a class="full-btn" href={"/apply"}>Apply (4mins)</a>
+      <a class="outline-btn" href={"/faq"}>FAQ</a>
     </div>
   </div>
 </section>

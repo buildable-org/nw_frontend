@@ -222,7 +222,7 @@
     .middle-flex {
       flex-direction: column;
       gap: 2rem;
-      margin: 5rem 2rem;
+      margin: 5rem 0rem;
     }
 
     .button-container a {

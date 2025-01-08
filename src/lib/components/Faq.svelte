@@ -86,18 +86,6 @@
     box-shadow: 0 8px 20px rgba(243, 167, 18, 0.4);
   }
 
-  .outline-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(243, 167, 18, 0.4);
-  }
-
-  .middle-flex {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
   .button-container {
     margin-bottom: 2em;
   }
@@ -123,20 +111,8 @@
     border: 2px solid var(--red);
   }
 
-  .outline-btn {
-    color: var(--yellow);
-    background: none;
-    border: 2px solid var(--yellow);
-  }
 
   @media (max-width: 768px) {
-    .cta h1 {
-      font-size: 2.5rem;
-    }
-
-    .cta p {
-      font-size: 1rem;
-    }
 
     .full-btn {
       margin-bottom: 20px !important;
