@@ -193,7 +193,7 @@
     }
 
     .hero-logo {
-      margin-top: 4rem;
+      margin-top: 3rem;
     }
 
     .hero h1 {
@@ -235,7 +235,8 @@
 
     .middle-flex {
       flex-direction: column;
-      gap: 2rem;
+      justify-content: center;
+      align-items: center;
       margin: 5rem 0rem;
     }
 
