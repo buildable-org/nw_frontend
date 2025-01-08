@@ -1,24 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.ico" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="/global.css" />
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%sveltekit.assets%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/global.css" />
 
-		<meta property="og:title" content="Sidequest"/>
-		<meta property="og:image" content="%sveltekit.assets%/thumbnail.png"/>
-		<meta property="og:description" content="We help you build out your side project in 6 weeks"/>
-		<meta property="og:url" content="mysidequest.xyz"/>
-		<meta property="og:image:width" content="1200" />
-		<meta property="og:image:height" content="627"/>
-		<meta property="og:type" content="website"/> 
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:image" content="%sveltekit.assets%/thumbnail.png" />
+    <!-- HTML Meta Tags -->
+    <title>Sidequest</title>
+    <meta
+      name="description"
+      content="We help you build out your side project in 6 weeks"
+    />
 
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="Sidequest" />
+    <meta
+      itemprop="description"
+      content="We help you build out your side project in 6 weeks"
+    />
+    <meta itemprop="image" content="https://mysidequest.xyz/thumbnail.png" />
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://mysidequest.xyz/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sidequest" />
+    <meta
+      property="og:description"
+      content="We help you build out your side project in 6 weeks"
+    />
+    <meta property="og:image" content="https://mysidequest.xyz/thumbnail.png" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sidequest" />
+    <meta
+      name="twitter:description"
+      content="We help you build out your side project in 6 weeks"
+    />
+    <meta
+      name="twitter:image"
+      content="https://mysidequest.xyz/thumbnail.png"
+    />
+
+    %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">%sveltekit.body%</div>
+  </body>
 </html>
