@@ -8,6 +8,10 @@
     const { formData } = data;
 </script>
 
+<svelte:head>
+  <title>Apply - Sidequest</title>
+</svelte:head>  
+
 <div class="global-container">
   <Application id="signup" {formData} />
   <Footer />

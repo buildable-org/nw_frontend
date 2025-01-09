@@ -75,10 +75,10 @@
     });
 
     try {
-      const baseURL = "http://34.136.198.157:1337";
+      const baseURL = "";
 
 
-      const res = await fetch(`${baseURL}/api/form-responses`, {
+      const res = await fetch(`/api/form-responses`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,7 +94,7 @@
       });
 
       if (res.ok) {
-        responseMessage = `alrighty, thanks for the interest, you're all set :)<br><br>we'll be in touch before you know it`;
+        responseMessage = `Alrighty, thanks for the interest, you're all set :)<br><br>We'll be in touch before you know it`;
         fieldValues = {};
         isSubmitted = true;
       } else {
@@ -254,19 +254,6 @@
     background-color: #d98c00;
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(243, 167, 18, 0.4);
-  }
-
-  .message {
-    text-align: center;
-    font-size: 1rem;
-    margin-top: 1rem;
-    color: #333;
-  }
-
-  .error {
-    text-align: center;
-    color: red;
-    font-size: 1rem;
   }
 
   @media (max-width: 768px) {

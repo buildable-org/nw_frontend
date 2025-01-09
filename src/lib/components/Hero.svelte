@@ -102,10 +102,6 @@
     box-shadow: 0 8px 20px rgba(243, 167, 18, 0.4);
   }
 
-  .subtitle {
-    margin-top: 30px;
-  }
-
   .middle-flex {
     display: flex;
     flex-direction: row;
@@ -189,7 +185,7 @@
   @media (max-width: 768px) {
 
     .hero {
-      line-height: 1;
+      line-height: 1.5;
     }
 
     .hero-logo {

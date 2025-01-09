@@ -21,6 +21,7 @@
 	},
 	"dependencies": {
 		"@directus/sdk": "^18.0.3",
+		"@sveltejs/adapter-node": "^5.2.11",
 		"axios": "^1.7.9",
 		"npm": "^11.0.0"
 	}

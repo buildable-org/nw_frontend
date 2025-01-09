@@ -6,6 +6,10 @@
     const { faqData } = data;
 </script>
 
+<svelte:head>
+  <title>FAQ - Sidequest</title>
+</svelte:head>  
+
 <div class="global-container">
   <Faq id="faq-section" {faqData} />
   <Footer />

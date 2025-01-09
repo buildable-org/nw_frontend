@@ -9,6 +9,10 @@
     const { heroData, cardsData, roadmapData, ctaData} = data;
 </script>
 
+<svelte:head>
+  <title>Sidequest</title>
+</svelte:head>  
+
 <div class="global-container">
   <Hero {heroData} />
   <Why id="why" {cardsData} />

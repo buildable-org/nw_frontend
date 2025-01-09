@@ -6,6 +6,10 @@
     const { ideaData } = data;
 </script>
 
+<svelte:head>
+  <title>100ideas - Sidequest</title>
+</svelte:head>  
+
 <div class="global-container">
   <Ideas id="ideas-section" {ideaData} />
   <Footer />
