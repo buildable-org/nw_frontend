@@ -74,6 +74,16 @@
       }
     });
 
+    // Send custom event to Google Analytics
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'form_submission', {
+        event_category: 'sign_up',
+        event_label: 'sign_up_form',
+        // Additional parameters can go here (GA4)
+      });
+    }
+
+
     try {
       const baseURL = "";
 
